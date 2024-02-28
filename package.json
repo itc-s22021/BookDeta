@@ -9,5 +9,9 @@
   "scripts": {
     "dev:front": "npm -w frontend run dev",
     "dev:back": "npm -w backend run dev"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.60",
+    "@types/react-dom": "^18.2.19"
   }
 }

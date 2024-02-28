@@ -1,4 +1,4 @@
-import {fetchCurrentRentalBooks, fetchRentalBooksHistory, RentalInfo, returnBook} from "@/app/lib/actions"
+import {fetchCurrentRentalBooks, fetchRentalBooksHistory, rentalInfo, returnBook} from "@/app/lib/actions"
 import Link from "next/link"
 import {formatDateToLocal} from "@/app/lib/utils"
 

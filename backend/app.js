@@ -1,3 +1,4 @@
+// app.js
 import express from "express";
 import session from "express-session";
 import cookieParser from "cookie-parser";
@@ -21,20 +22,19 @@ app.use(
 );
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin: "http://localhost:3040",
         credentials: true,
     })
 );
 app.use(passport.authenticate("session"));
 
-// use routes
-
 // 404 handler
-app.use((req, res, next) => {
+app.use((req, res) => {
     res.status(404).json({ message: "not found." });
 });
 
-app.use((err, req, res, next) => {
+// Error handler
+app.use((err, req, res) => {
     let message = "Internal Server Error";
     if (err.status === 401) {
         message = "Unauthenticated";

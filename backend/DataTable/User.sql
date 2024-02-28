@@ -1,0 +1,8 @@
+CREATE TABLE users (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(256) UNIQUE NOT NULL,
+    name VARCHAR(100),
+    password TINYBLOB NOT NULL,
+    salt TINYBLOB NOT NULL,
+    isAdmin BOOLEAN DEFAULT false
+);

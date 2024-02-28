@@ -17,6 +17,28 @@ app.set("port", port);
 
 const server = http.createServer(app);
 
+// ユーザ登録
+app.post("/register", (req, res) => {
+    const { email, name, password } = req.body;
+    // バリデーションなどのロジックを追加
+    // データベースにユーザを登録する処理を追加
+    res.status(200).json({ message: "User registered successfully." });
+});
+
+// ログイン
+app.post("/login", (req, res) => {
+    const { email, password } = req.body;
+    // バリデーションなどのロジックを追加
+    // ログイン処理を実装
+    res.status(200).json({ message: "User logged in successfully." });
+});
+
+// ログアウト
+app.post("/logout", (req, res) => {
+    // ログアウト処理を実装
+    res.status(200).json({ message: "User logged out successfully." });
+});
+
 server.listen(port);
 server.on("error", onError);
 server.on("listening", onListening);
