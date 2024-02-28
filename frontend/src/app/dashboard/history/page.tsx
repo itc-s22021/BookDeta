@@ -1,16 +1,16 @@
-import {fetchCurrentRentalBooks, fetchRentalBooksHistory, rentalInfo, returnBook} from "@/app/lib/actions"
-import Link from "next/link"
-import {formatDateToLocal} from "@/app/lib/utils"
+import { fetchCurrentRentalBooks, fetchRentalBooksHistory, RentalInfo, returnBook } from "@/app/lib/actions";
+import Link from "next/link";
+import { formatDateToLocal } from "@/app/lib/utils";
 
 type Prop = {
     searchParams: {
-        mode?: "returned"
-    }
-}
+        mode?: "returned";
+    };
+};
 
-const Page = async ({searchParams}: Prop) => {
-    const isPast = searchParams.mode === "returned"
-    const rentals = isPast ? await fetchRentalBooksHistory() : await fetchCurrentRentalBooks()
+const Page = async ({ searchParams }: Prop) => {
+    const isPast = searchParams.mode === "returned";
+    const rentals = isPast ? await fetchRentalBooksHistory() : await fetchCurrentRentalBooks();
 
     return (
         <>
@@ -45,7 +45,7 @@ const Page = async ({searchParams}: Prop) => {
                         </tr>
                         </thead>
                         <tbody className="bg-white">
-                        {rentals.map((rental) => (
+                        {rentals.map((rental: RentalInfo) => (
                             <tr
                                 key={rental.id}
                                 className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
@@ -66,8 +66,8 @@ const Page = async ({searchParams}: Prop) => {
                                 <td>
                                     {!isPast && (
                                         <form action={async () => {
-                                            "use server"
-                                            await returnBook(rental.bookId)
+                                            "use server";
+                                            await returnBook(rental.bookId);
                                         }} className="w-full text-center m-0.5">
                                             <button
                                                 className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
@@ -84,7 +84,7 @@ const Page = async ({searchParams}: Prop) => {
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Page
+export default Page;
